@@ -12,6 +12,7 @@ const Cpf = ({onChange,value,error,helperText,onBlur}) => (
     onBlur={onBlur}
     id="cpf"
     label="CPF"
+    type="number"
     variant="outlined"
     fullWidth
     margin="normal"
