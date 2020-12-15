@@ -6,12 +6,17 @@ import FormSingIn from './components/FormSingIn'
 import {Container, Typography } from "@material-ui/core"
 
 const App = () => {
+
+  function finishJob(registrationData){
+    console.log(registrationData);
+  }
+
   return(
     <Container component="article" maxWidth="sm">
       <Typography variant="h3" align="center" color="primary">
           Formulario de Cadastro
         </Typography>
-      < FormSingIn />
+      < FormSingIn formData={finishJob}/>
     </Container>
   )
 }

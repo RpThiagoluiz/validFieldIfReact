@@ -13,6 +13,8 @@ const Cpf = ({onChange,value,error,helperText,onBlur}) => (
     id="cpf"
     label="CPF"
     type="number"
+    required
+    //style
     variant="outlined"
     fullWidth
     margin="normal"

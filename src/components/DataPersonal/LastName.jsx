@@ -6,14 +6,16 @@ const LastName = ({ onChange, value,helperText,error,onBlur }) => (
   <TextField
     onChange={onChange}
     value={value}
-    id="sobrenome"
-    label="Sobrenome"
-    variant="outlined"
-    fullWidth
-    margin="normal"
     helperText={helperText}
     error={error}
     onBlur={onBlur}
+    id="sobrenome"
+    label="Sobrenome"
+    required
+    //styles
+    variant="outlined"
+    fullWidth
+    margin="normal"
   />
 );
 export default LastName;

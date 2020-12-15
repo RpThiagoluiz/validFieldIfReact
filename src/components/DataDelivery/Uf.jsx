@@ -3,12 +3,16 @@ import React from 'react'
 import { TextField } from '@material-ui/core'
 
 
-const DeliveryUf = () => {
+const DeliveryUf = ({value, onChange}) => {
     return(
         <TextField 
+            value={value}
+            onChange={onChange}
             id="uf"
             label="Estado"
             type="text"
+            required
+            //styles
             variant="outlined"
             margin="normal"
         />

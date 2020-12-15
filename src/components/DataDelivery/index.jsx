@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 //Components
 import Adress from './Adress'
 import AdressNumber from './AdressNumber'
@@ -10,25 +10,42 @@ import DeliveryUf from './Uf';
 import { Button } from '@material-ui/core'
 
 
-const DataDelivery = () => (
-    <>
-        <Adress />
-        <AdressNumber />
-        <DeliveryCEP />
-        <DeliveryUf />
-        <DeliveryCity />
+const DataDelivery = ({sendDataForNextStep}) => {
+    const[adr,setAdr] = useState("")
+    const[adrNumber,setAdrNumber] = useState("")
+    const[delivCEP,setDelivCEP] = useState("")
+    const[delivUf,setDelivUf] = useState("")
+    const[delivCity, setDelivCity] = useState("")
 
-        <Button 
-            variant="contained"
-            color="primary"
-            type="submit"
-            margin="normal"
-            fullWidth  
-        >
-            Finalizar Cadastro
-        </Button>
-    </>
-)
+   
+
+
+
+
+    return (
+        <form onSubmit={e => {
+            e.preventDefault()
+            sendDataForNextStep({adr, adrNumber, delivCEP, delivUf, delivCity})
+        }}>
+            <Adress value={adr} onChange={e => setAdr(e.target.value)}/>
+            <AdressNumber value={adrNumber} onChange={e => setAdrNumber(e.target.value)}/>
+            <DeliveryCEP value={delivCEP} onChange={e => setDelivCEP(e.target.value)}/>
+            <DeliveryUf value={delivUf} onChange={e => setDelivUf(e.target.value)}/>
+            <DeliveryCity value={delivCity} onChange={e => setDelivCity(e.target.value)}/>
+    
+            <Button 
+                variant="contained"
+                color="primary"
+                type="submit"
+                margin="normal"
+                fullWidth
+            >
+                Finalizar Cadastro
+            </Button>
+        </form>
+    )
+}
+
     
 
 export default DataDelivery

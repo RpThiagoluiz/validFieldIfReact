@@ -11,7 +11,7 @@ import SwitchNews from "./SwitchNews";
 import SwitchPromo from "./SwitchPromo";
 
 
-const PersonalDataForm = ({onSubmit, validCpf,validName,validLastName}) => {
+const PersonalDataForm = ({sendDataForNextStep, validCpf,validName,validLastName}) => {
   const[name, setName] = useState("")
   const[lastName,setLastName] = useState("")
   const [cpf,setCpf] = useState("")
@@ -61,7 +61,7 @@ const PersonalDataForm = ({onSubmit, validCpf,validName,validLastName}) => {
 
   const handleDataOnSubmit = (e) => {
     e.preventDefault()
-    onSubmit({name, lastName, cpf, promo, news })
+    sendDataForNextStep({name, lastName, cpf, promo, news })
   }
   
 
@@ -107,7 +107,7 @@ const PersonalDataForm = ({onSubmit, validCpf,validName,validLastName}) => {
           type="submit"
           margin="normal"
         >
-          Cadastrar
+          Proximo
         </Button>
       </form>
     </>

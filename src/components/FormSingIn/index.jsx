@@ -1,72 +1,69 @@
-import React from "react"
+import React,{useState,useEffect} from "react"
 //Components
 import DataPersonal from "../DataPersonal"
 import DataUser from "../DataUser"
 import DataDelivery from './../DataDelivery/index'
+//Material-ui
+import { StepLabel, Step, Stepper, Typography } from '@material-ui/core';
+//Validation
+import {checkValidCPF} from '../../models/validation/cpfValidation'
+import {checkValidName} from '../../models/validation/nameValidation'
+import {checkValidLastName} from '../../models/validation/lastNameValidation'
 
-const FormSingIn = () => {
+
+const FormSingIn = ({formData}) => {
+
+  const[currentStep,setCurrentStep] = useState(0)
+  const[regiData,setRegiData] = useState({})
+
+  //se fez necessario pois o useState `e async.
+  useEffect(()=> {
+    //passei um condicional pra so enviar os dados do registro depois q for concluido o formulario.
+    if(currentStep === formsSteps.length - 1){
+      formData(regiData)
+
+    }
+  })
  
-  //Validar cpf
-  const checkValidCPF = (cpf) => {
-    if(cpf.length !== 11) {
-      return {
-        valid:false,
-        msg:"Cpf invalido"
-      }
-    } else{
-      return{
-        valid:true,
-        msg:""
-      }
-    }
-    
-  }
-  
-  //Validar Nome
 
-  const checkValidName = (name) => {
-    if(name.length < 3 ){
-      return {
-        valid:false,
-        msg:"Nome invalido!"
-      }
-    } else {
-      return{
-        valid: true,
-        msg:""
-      }
-    }
-  }
 
-  //Validar SobreNome
-
-  const checkValidLastName = (lastName) => {
-    if(lastName.length < 3 ){
-      return {
-        valid:false,
-        msg:"SobreNome invalido!"
-      }
-    } else {
-      return{
-        valid: true,
-        msg:""
-      }
-    }
-  }
-
-   //FunctionExtrair o dados de cadastrado, por enquando eles estao aparecendo no Console.
-   const formData = (info) => {
-     //Check campos Vazios - para isso tenho q transformar form, em um componente e passar props para ele
-     return(console.log(info))
+  //Armazenar os dados coletados - 
+   const nextStep = (registrationData) => {
+      setRegiData({...regiData,...registrationData})
+      setCurrentStep(currentStep + 1)
    }
+
+   const formsSteps = [
+        <DataUser  sendDataForNextStep={nextStep}/>,
+        <DataPersonal sendDataForNextStep={nextStep} validName={checkValidName} validLastName={checkValidLastName} validCpf={checkValidCPF}/>,
+        <DataDelivery sendDataForNextStep={nextStep}/>,
+        <Typography variant="h4" align="center"> Cadastro realizado com Sucesso!</Typography>
+   ]
 
   return (
     <>
-      <DataPersonal onSubmit={formData} validName={checkValidName} validLastName={checkValidLastName} validCpf={checkValidCPF}/>
-      <DataUser />
-      <DataDelivery />
-    </>
-  );
-};
+    <Stepper activeStep={currentStep}>
+      <Step>
+        <StepLabel>Login</StepLabel>
+      </Step>
 
-export default FormSingIn;
+      <Step>
+        <StepLabel>Dados Pessoais</StepLabel>
+      </Step>
+
+      <Step>
+        <StepLabel>Endereco</StepLabel>
+      </Step>
+
+      <Step>
+        <StepLabel>Finalizacao</StepLabel>
+      </Step>
+
+    </Stepper>
+      {formsSteps[currentStep]}
+      
+    </> 
+  )
+}
+
+export default FormSingIn
