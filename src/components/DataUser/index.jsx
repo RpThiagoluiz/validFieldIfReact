@@ -9,10 +9,12 @@ import { Button } from '@material-ui/core'
 
 
 
+
 const DataUser = ({sendDataForNextStep, validPass}) => {
     const [email, setEmail] = useState("")
     const [pass, setPass] = useState("")
     const [confirmPass, setConfirmPass] = useState("")
+    const[errorConfirmPass,setConfirmErrorPass] = useState({valid:true,msg:""})
     
 
     const[errorPass,setErrorPass] = useState({
@@ -30,9 +32,26 @@ const DataUser = ({sendDataForNextStep, validPass}) => {
 
     }
 
+    const handleConfirmPassError = (e) => {
+        const itValid = e.target.value
+        setConfirmErrorPass( _ =>  {
+            if(itValid !== pass) {
+                return{
+                    valid:false,
+                    msg:"Password nao conferem!"
+                }
+            } else {
+                return{
+                    valid:true,
+                    msg:""
+                }
+            }
+        })
+
+
+    }
     
-
-
+  
     return(
         <form onSubmit={e => {
                 e.preventDefault()
@@ -53,7 +72,10 @@ const DataUser = ({sendDataForNextStep, validPass}) => {
 
             <DataConfirmPass 
                 value={confirmPass}
-                onChange={(e) =>  setConfirmPass(e.target.value)} 
+                onChange={(e) =>  setConfirmPass(e.target.value)}
+                error={!errorConfirmPass.valid}
+                helperText={errorConfirmPass.msg}
+                onBlur={handleConfirmPassError}
                 
             
             />

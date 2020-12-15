@@ -1,8 +1,8 @@
-const matchValuePass = (pass,confirmpass) => {
-    if(pass !== confirmpass) {
+const matchValuePass = ({pass,confirmPass}) => {
+    if(pass !== confirmPass) {
         return{
             valid:false,
-            msg:"Password nao combinam!"
+            msg:"Password nao conferem!"
         }
     } else {
         return{
