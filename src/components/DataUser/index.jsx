@@ -7,7 +7,8 @@ import DataConfirmPass from './ConfirmPass'
 //Material-ui
 import { Button } from '@material-ui/core'
 
-
+//Material-ui MODAL
+import SimpleModal from '../Modal'
 
 
 const DataUser = ({sendDataForNextStep, validPass}) => {
@@ -15,14 +16,17 @@ const DataUser = ({sendDataForNextStep, validPass}) => {
     const [pass, setPass] = useState("")
     const [confirmPass, setConfirmPass] = useState("")
 
-    const[errorConfirmPass,setConfirmErrorPass] = useState({valid:true,msg:""})
     const[errorPass,setErrorPass] = useState({
         valid:true,
-        msg:"Deve conter min 6 Digitos, 1 letras maiscula"
+        msg:"No minimo: 8 Digitos, 1 Letra Maiuscula e 1 minuscula, 1 numero, 1 Caracter Special(!@#$%^&*)"
+    })
+    const[errorConfirmPass,setConfirmErrorPass] = useState({
+        valid:true,
+        msg:""
     })
 
-   // const[errorConfirmPass,setConfirmErrorPass] = useState({valid:true,msg:""}) - props {,validConfirmPass} - component
     
+      
 
 
     const handlePassError = (e) => {
@@ -46,20 +50,35 @@ const DataUser = ({sendDataForNextStep, validPass}) => {
                 }
             }
         })
+        
     }
     
-    // const validateAll = _ =>  {
-    //     if((errorPass.valid = true) && (errorConfirmPass.valid = true)) {
-    // FAZER SO IR PRA FRENTE SE AQUELA ETAPA TIVER CONCLUIDA
-    //     }
-
-    
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const erPass = errorPass.valid
+       if(pass !== confirmPass){
+            return(
+                <>
+                    <SimpleModal title="Erro" desc="As senhas nao conferem!"/>
+                    {console.log(`senhas nao conferem`)}
+                </>
+            )
+       } else if(erPass === false) {
+           return (
+            <>
+                <SimpleModal title="Erro" desc="As senhas nao conferem!"/>
+                {console.log(`Senha`)}
+            </>
+           )
+            
+       } else{
+            sendDataForNextStep({email,pass,confirmPass})
+       }
+    }
+ 
   
     return(
-        <form onSubmit={e => {
-                e.preventDefault()
-                sendDataForNextStep({email,pass,confirmPass})
-            }}
+        <form onSubmit={handleSubmit}
         >
             <DataEmail 
                 value={email} 
@@ -92,6 +111,8 @@ const DataUser = ({sendDataForNextStep, validPass}) => {
            
             
             >Proximo</Button>
+
+<SimpleModal title="Erro" desc="As senhas nao conferem!"/>
         </form>
     )
 }

@@ -17,11 +17,7 @@ const DataDelivery = ({sendDataForNextStep}) => {
     const[delivUf,setDelivUf] = useState("")
     const[delivCity, setDelivCity] = useState("")
 
-   
-
-
-
-
+ 
     return (
         <form onSubmit={e => {
             e.preventDefault()
@@ -46,6 +42,6 @@ const DataDelivery = ({sendDataForNextStep}) => {
     )
 }
 
-    
+    //AQUI TEM Q TER UM BIBLIOTECA CONJUNTA COM O SISTEMA DOS CORREIOS.
 
 export default DataDelivery

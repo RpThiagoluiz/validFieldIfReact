@@ -8,7 +8,6 @@ import { StepLabel, Step, Stepper, Typography } from '@material-ui/core';
 //Validation
 import {checkValidCPF} from '../../models/validation/cpfValidation'
 import {checkValidPass} from '../../models/validation/passValidation'
-import {matchValuePass} from '../../models/validation/confirmPassValidation'
 
 
 const FormSingIn = ({formData}) => {
