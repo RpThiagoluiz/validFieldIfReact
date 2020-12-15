@@ -3,7 +3,7 @@ import React from 'react'
 //Material-ui
 import { TextField } from '@material-ui/core';
 
-const ConfirmPass = ({value, onChange}) => {
+const DataConfirmPass = ({value, onChange,error,helperText,onBlur}) => {
     return(
         <TextField 
         id="Confirm-passaword" 
@@ -13,6 +13,9 @@ const ConfirmPass = ({value, onChange}) => {
 
         value={value}
         onChange={onChange}
+        error={error}
+        helperText={helperText}
+        onBlur={onBlur}
         
         variant="outlined"
         margin="normal"
@@ -20,4 +23,4 @@ const ConfirmPass = ({value, onChange}) => {
         />
     )
 }
-export default ConfirmPass
+export default DataConfirmPass

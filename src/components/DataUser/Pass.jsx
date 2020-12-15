@@ -2,7 +2,7 @@ import React from 'react'
 //Material-ui
 import { TextField } from '@material-ui/core';
 
-const DataPass = ({value, onChange}) => {
+const DataPass = ({value, onChange,error,helperText,onBlur}) => {
     return (
         <>
         <TextField 
@@ -13,6 +13,9 @@ const DataPass = ({value, onChange}) => {
 
             value={value}
             onChange={onChange}
+            error={error}
+            helperText={helperText}
+            onBlur={onBlur}
 
             variant="outlined"
             margin="normal"

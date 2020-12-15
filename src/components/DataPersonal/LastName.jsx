@@ -2,13 +2,10 @@ import React from "react";
 //Material-ui
 import { TextField } from "@material-ui/core";
 
-const LastName = ({ onChange, value,helperText,error,onBlur }) => (
+const LastName = ({ onChange, value }) => (
   <TextField
     onChange={onChange}
     value={value}
-    helperText={helperText}
-    error={error}
-    onBlur={onBlur}
     id="sobrenome"
     label="Sobrenome"
     required

@@ -4,7 +4,7 @@ import { TextField } from '@material-ui/core'
 
 
 
-const Name = ({onChange, value,helperText,error,onBlur}) => {
+const Name = ({onChange, value}) => {
   
   
 
@@ -12,17 +12,15 @@ const Name = ({onChange, value,helperText,error,onBlur}) => {
     <TextField
     value={value}
     onChange={onChange}
-    onBlur={onBlur}
-    helperText={helperText}
-    error={error}
-    id="nome"
+    
+    id="name"
     label="Nome"
     required
     //styles
     variant="outlined"
     fullWidth
     margin="normal"
-    //onlyLetters
+    //onlyLetters -notWorking
     inputProps={{pattern: "[a-z]{1,15}" }}
   />
   )

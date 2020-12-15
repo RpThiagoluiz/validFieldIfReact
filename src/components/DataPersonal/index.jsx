@@ -11,23 +11,13 @@ import SwitchNews from "./SwitchNews";
 import SwitchPromo from "./SwitchPromo";
 
 
-const PersonalDataForm = ({sendDataForNextStep, validCpf,validName,validLastName}) => {
+const PersonalDataForm = ({sendDataForNextStep, validCpf}) => {
   const[name, setName] = useState("")
   const[lastName,setLastName] = useState("")
   const [cpf,setCpf] = useState("")
   const [news,setNews] = useState(true)
   const [promo,setPromo] = useState(false)
 
-  //Errors - Somente quando sair do Campo de Digitacao
-  const [nameError,setNameError] = useState({
-    valid:true,
-    msg:""
-  })
-
-  const [lastNameError,setLastNameError] = useState({
-    valid:true,
-    msg:""
-  })
 
   const [cpfError, setCpfError] = useState({
     valid:true, 
@@ -35,24 +25,11 @@ const PersonalDataForm = ({sendDataForNextStep, validCpf,validName,validLastName
   })
 
   
-  const handleName = (e) => {
-      setName(e.target.value) 
-      //Aqui que vai a verificacao.
-  }
+  
 
-  const handleLastName = (e) => {
-    setLastName(e.target.value)
-  }
+ 
 
-  const handleNameError = (e) => {
-    const itValid = validName(e.target.value) //Substiudo pelo estado do Name = validName(name)
-    setNameError(itValid)
-  }
-
-  const handleLastNameError = (e) => {
-    const itValid = validLastName(e.target.value) //Substiudo pelo estado do Name = validName(name)
-    setLastNameError(itValid)
-  }
+  
 
   const handleCpfError = (e) => {
     const itValid = validCpf(e.target.value) //Estado do `cpf`
@@ -70,21 +47,16 @@ const PersonalDataForm = ({sendDataForNextStep, validCpf,validName,validLastName
       <form onSubmit={handleDataOnSubmit}>
         <Name 
           value={name}
-          onChange={handleName}
-          //Error Name
-          error={!nameError.valid}
-          helperText={nameError.msg}
-          onBlur={handleNameError}
+          onChange={(e) => setName(e.target.value)}
+          
+          
           
         />
 
         <LastName 
           value={lastName}
-          onChange={handleLastName}
-          //Error Name
-          error={!lastNameError.valid}
-          helperText={lastNameError.msg}
-          onBlur={handleLastNameError}
+          onChange={(e) => setLastName(e.target.value)}
+          
         />
 
         <Cpf 

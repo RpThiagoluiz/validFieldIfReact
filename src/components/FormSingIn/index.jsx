@@ -7,8 +7,8 @@ import DataDelivery from './../DataDelivery/index'
 import { StepLabel, Step, Stepper, Typography } from '@material-ui/core';
 //Validation
 import {checkValidCPF} from '../../models/validation/cpfValidation'
-import {checkValidName} from '../../models/validation/nameValidation'
-import {checkValidLastName} from '../../models/validation/lastNameValidation'
+import {checkValidPass} from '../../models/validation/passValidation'
+import {matchValuePass} from '../../models/validation/confirmPassValidation'
 
 
 const FormSingIn = ({formData}) => {
@@ -25,6 +25,8 @@ const FormSingIn = ({formData}) => {
     }
   })
  
+  //confirmPass
+
 
 
   //Armazenar os dados coletados - 
@@ -34,8 +36,8 @@ const FormSingIn = ({formData}) => {
    }
 
    const formsSteps = [
-        <DataUser  sendDataForNextStep={nextStep}/>,
-        <DataPersonal sendDataForNextStep={nextStep} validName={checkValidName} validLastName={checkValidLastName} validCpf={checkValidCPF}/>,
+        <DataUser  sendDataForNextStep={nextStep} validPass={checkValidPass}/>,
+        <DataPersonal sendDataForNextStep={nextStep}  validCpf={checkValidCPF}/>,
         <DataDelivery sendDataForNextStep={nextStep}/>,
         <Typography variant="h4" align="center"> Cadastro realizado com Sucesso!</Typography>
    ]
