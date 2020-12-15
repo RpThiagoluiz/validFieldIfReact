@@ -14,9 +14,8 @@ const DataUser = ({sendDataForNextStep, validPass}) => {
     const [email, setEmail] = useState("")
     const [pass, setPass] = useState("")
     const [confirmPass, setConfirmPass] = useState("")
-    const[errorConfirmPass,setConfirmErrorPass] = useState({valid:true,msg:""})
-    
 
+    const[errorConfirmPass,setConfirmErrorPass] = useState({valid:true,msg:""})
     const[errorPass,setErrorPass] = useState({
         valid:true,
         msg:"Deve conter min 6 Digitos, 1 letras maiscula"
@@ -36,7 +35,7 @@ const DataUser = ({sendDataForNextStep, validPass}) => {
         const itValid = e.target.value
         setConfirmErrorPass( _ =>  {
             if(itValid !== pass) {
-                return{
+                return {
                     valid:false,
                     msg:"Password nao conferem!"
                 }
@@ -47,9 +46,13 @@ const DataUser = ({sendDataForNextStep, validPass}) => {
                 }
             }
         })
-
-
     }
+    
+    // const validateAll = _ =>  {
+    //     if((errorPass.valid = true) && (errorConfirmPass.valid = true)) {
+    // FAZER SO IR PRA FRENTE SE AQUELA ETAPA TIVER CONCLUIDA
+    //     }
+
     
   
     return(
@@ -84,6 +87,9 @@ const DataUser = ({sendDataForNextStep, validPass}) => {
             color="primary"
             type="submit"
             margin="normal"
+
+            
+           
             
             >Proximo</Button>
         </form>

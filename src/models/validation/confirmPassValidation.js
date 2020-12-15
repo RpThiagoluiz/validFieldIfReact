@@ -13,3 +13,5 @@ const matchValuePass = ({pass,confirmPass}) => {
 }
 
 export {matchValuePass}
+
+//it will use in hardcode on DataUser/index.js
