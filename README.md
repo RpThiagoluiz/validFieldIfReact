@@ -13,19 +13,19 @@ Hello,
    The steps are being released according to the user to fill out the form.
      Control of steps is done, so that there is no way to pass it to the next one without filling in the data, some controls are own of the html, most were created in JS to prevent false data.
 
-![](./img/01.png)
-![](./img/02.png)
-![](./img/03ErrorPW.png)
-![](./img/04ErrorCfPW.png)
-![](./img/05ErrorName.png)
-![](./img/05ErrorName02.png)
-![](./img/06ErrorCpf.png)
-![](./img/07.png)
-![](./img/08.png)
+![](./ImgRead.ME/01.png)
+![](./ImgRead.ME/02.png)
+![](./ImgRead.ME/03ErrorPW.png)
+![](./ImgRead.ME/04ErrorCfPW.png)
+![](./ImgRead.ME/05ErrorName.png)
+![](./ImgRead.ME/05ErrorName02.png)
+![](./ImgRead.ME/06ErrorCpf.png)
+![](./ImgRead.ME/07.png)
+![](./ImgRead.ME/08.png)
 
 
 ### Updates.
-[ ] Modal ao inves de utilizar o console.log. 
+[ ] Modal Error!
 
 
 [DevThiago](https://devthiagoluiz.com.br/)
