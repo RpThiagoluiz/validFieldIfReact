@@ -11,44 +11,68 @@ import SwitchNews from "./SwitchNews";
 import SwitchPromo from "./SwitchPromo";
 
 
-const PersonalDataForm = ({sendDataForNextStep, validCpf}) => {
+const PersonalDataForm = ({sendDataForNextStep, validCpf,validName}) => {
   const[name, setName] = useState("")
   const[lastName,setLastName] = useState("")
   const [cpf,setCpf] = useState("")
   const [news,setNews] = useState(true)
   const [promo,setPromo] = useState(false)
 
+  const [nameError, setNameError] = useState({
+    valid:true,
+    msg:""
+  })
 
   const [cpfError, setCpfError] = useState({
     valid:true, 
     msg:""
   })
 
-  
-  
 
- 
-
-  
+  const handleNameError = (e) => {
+    const itValid = validName(e.target.value)
+    setNameError(itValid)
+  }
 
   const handleCpfError = (e) => {
     const itValid = validCpf(e.target.value) //Estado do `cpf`
     setCpfError(itValid)
   }
 
-  const handleDataOnSubmit = (e) => {
-    e.preventDefault()
-    sendDataForNextStep({name, lastName, cpf, promo, news })
-  }
-  
+  // sendDataForNextStep({name, lastName, cpf, promo, news })
 
+  const handleOnSubmit = (e) => {
+    e.preventDefault()
+    const erName = nameError.valid
+    const erCpf = cpfError.valid
+
+    if(erName === false) {
+      return (
+        console.log(`Erro no campo Nome!`)
+      )
+    } else if (erCpf === false){
+      return (
+        console.log(`Erro no campo CPF`)
+      )
+    } else {
+      sendDataForNextStep({name,lastName,cpf})
+    }
+
+    
+  }
+
+  
   return (
     <>
-      <form onSubmit={handleDataOnSubmit}>
+      <form onSubmit={handleOnSubmit}>
         <Name 
           value={name}
           onChange={(e) => setName(e.target.value)}
           
+          //ErrorName
+          error={!nameError.valid}
+          helperText={nameError.msg}
+          onBlur={handleNameError}
           
           
         />

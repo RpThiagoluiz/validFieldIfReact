@@ -4,7 +4,7 @@ import { TextField } from '@material-ui/core'
 
 
 
-const Name = ({onChange, value}) => {
+const Name = ({onChange, value,error, helperText,onBlur}) => {
   
   
 
@@ -12,6 +12,9 @@ const Name = ({onChange, value}) => {
     <TextField
     value={value}
     onChange={onChange}
+    error={error}
+    helperText={helperText}
+    onBlur={onBlur}
     
     id="name"
     label="Nome"

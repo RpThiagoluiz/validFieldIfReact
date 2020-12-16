@@ -8,7 +8,7 @@ import DataConfirmPass from './ConfirmPass'
 import { Button } from '@material-ui/core'
 
 //Material-ui MODAL
-import SimpleModal from '../Modal'
+//import SimpleModal from '../Modal'
 
 
 const DataUser = ({sendDataForNextStep, validPass}) => {
@@ -58,17 +58,11 @@ const DataUser = ({sendDataForNextStep, validPass}) => {
         const erPass = errorPass.valid
        if(pass !== confirmPass){
             return(
-                <>
-                    <SimpleModal title="Erro" desc="As senhas nao conferem!"/>
-                    {console.log(`senhas nao conferem`)}
-                </>
+                console.log(`senhas nao conferem`)
             )
        } else if(erPass === false) {
            return (
-            <>
-                <SimpleModal title="Erro" desc="As senhas nao conferem!"/>
-                {console.log(`Senha`)}
-            </>
+                console.log(`Senha`)
            )
             
        } else{
@@ -112,7 +106,7 @@ const DataUser = ({sendDataForNextStep, validPass}) => {
             
             >Proximo</Button>
 
-<SimpleModal title="Erro" desc="As senhas nao conferem!"/>
+        
         </form>
     )
 }
